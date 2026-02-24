@@ -1,0 +1,173 @@
+diff --git a/Gemma_Diagnosis.py b/Gemma_Diagnosis.py
+index 6cac569..a8a1afb 100644
+--- a/Gemma_Diagnosis.py
++++ b/Gemma_Diagnosis.py
+@@ -117,8 +117,8 @@ def check_avail_memory(logger):
+     
+     # Check available memory
+     mem = psutil.virtual_memory()
+-    print(f"Available RAM: {mem.available / (1024**3):.2f} GB")
+-    print(f"Free RAM: {mem.free / (1024**3):.2f} GB")
++    logger.info(f"Available RAM: {mem.available / (1024**3):.2f} GB")
++    logger.info(f"Free RAM: {mem.free / (1024**3):.2f} GB")
+ 
+     # Force garbage collection
+     gc.collect()
+@@ -130,7 +130,7 @@ def check_avail_memory(logger):
+ 
+     return
+ 
+-def load_data(dpath, train_sample_size, test_sample_size, seq_size, logger):
++def load_data(trfile, tsfile, train_sample_size, test_sample_size, seq_size, logger):
+ 
+     """ Load MIMIC data</font></b></p><br>
+         a) Read Training Data 
+@@ -144,7 +144,7 @@ def load_data(dpath, train_sample_size, test_sample_size, seq_size, logger):
+     # Load MIMIC-III data
+     logger.info("Loading MIMIC-III data from parquet file...")
+     
+-    train_df_in = pd.read_parquet(dpath + 'intsl_train_group_full_no2c.snappy.parquet')  # Replace with your file path
++    train_df_in = pd.read_parquet(trfile)  
+ 
+     # Display data info
+ 
+@@ -162,7 +162,7 @@ def load_data(dpath, train_sample_size, test_sample_size, seq_size, logger):
+     logger.info(f"Train shapes: {train_sample_df.shape}, {train_sample_df2.shape}")
+     
+     # get test cases
+-    test_df_in = pd.read_parquet(dpath + 'intsl_test_group_full_no2c.snappy.parquet') 
++    test_df_in = pd.read_parquet(tsfile) 
+     # Display data info of test data
+     
+     logger.info(f"\nDataset shape: {test_df_in.shape}") 
+@@ -221,20 +221,50 @@ class LlamaCppWrapper:
+         logger.info(f"Context size: {n_ctx}")
+         logger.info(f"Using {n_threads} CPU threads")
+         
+-        self.llm = Llama(
++        print('Model:', model_path)
++    
++        # Verify model file exists and is readable
++        if not os.path.exists(model_path):
++            raise FileNotFoundError(f"Model file not found: {model_path}")
++    
++        file_size_gb = os.path.getsize(model_path) / (1024**3)
++        logger.info(f"Model file size: {file_size_gb:.2f} GB")
++        
++        # ← ADD: Check memory before loading
++        import psutil
++        mem = psutil.virtual_memory()
++        logger.info(f"Available RAM before loading: {mem.available / (1024**3):.2f} GB")
++        logger.info(f"Free RAM before loading: {mem.free / (1024**3):.2f} GB")
++        logger.info(f"Memory usage: {mem.percent}%")
++        
++        try:
++            self.llm = Llama(
+             model_path=model_path,
+             n_ctx=n_ctx,
+             n_threads=n_threads,
+             n_batch=n_batch,
+             use_mmap=use_mmap,
+             logits_all=True,
+-            n_gpu_layers=0,  # CPU only (change if you add GPU later)
+-            verbose=False
+-        )
++            n_gpu_layers=0,
++            verbose=True,  # ← CHANGE: Enable verbose to see C++ output
++            use_mlock=False,  # Don't lock memory
++            numa=False,       # Disable NUMA
++            )
++            logger.info("Model loaded successfully")
+         
++            # ← ADD: Check memory after loading
++            mem_after = psutil.virtual_memory()
++            logger.info(f"Available RAM after loading: {mem_after.available / (1024**3):.2f} GB")
++            logger.info(f"Memory used by model: {(mem.available - mem_after.available) / (1024**3):.2f} GB")
++        
++        except Exception as e:
++            logger.error(f"Failed to load model: {str(e)}")
++            logger.error(f"Error type: {type(e).__name__}")
++            raise  
++    
++        print('got past create')
+         self.model_name = os.path.basename(model_path)
+         logger.info(f"[OK] Model '{self.model_name}' loaded successfully")
+-        return
+     
+     def generate(self, prompt: str, max_tokens: int = 150, temperature: float = 0.1, logger = None) -> str:
+         """
+@@ -456,6 +486,24 @@ class FewShotDiagnosisClassifier:
+         
+         return self
+     
++    def _generate_icd10_mapping(self) -> str:
++        """Generate ICD-10 code mapping (SHARED by both RAG and non-RAG)."""
++        if self.icd10_descriptions is None:
++            return """0 = A41.9 (Sepsis, unspecified organism)
++                      1 = I21.4 (Acute subendocardial myocardial infarction)
++                      2 = J96.00 (Acute respiratory failure, unspecified)
++                    3 = N17.9 (Acute kidney failure, unspecified)"""
++        
++        mapping_lines = []
++        for idx, icd_code in enumerate(self.classes_):
++            desc_row = self.icd10_descriptions[
++                self.icd10_descriptions['icd10_code'] == icd_code
++            ]
++            description = desc_row.iloc[0]['description'] if not desc_row.empty else "Description not found"
++            mapping_lines.append(f"{idx} = {icd_code} ({description})")
++        
++        return "\n".join(mapping_lines)
++    
+     def _create_prompt(self, patient_text: str, logger, patient_id: Optional[str] = None) -> str:
+         """
+         Create a few-shot prompt for a single patient.
+@@ -963,14 +1011,14 @@ class FewShotDiagnosisClassifier:
+         # F1-Score
+         f1 = f1_score(y_true, y_pred, average=None)
+ 
+-        labels = ['A41.9', 'I21.4', 'J96.00', 'N17.9']
++        #labels = ['A41.9', 'I21.4', 'J96.00', 'N17.9']  # replaced with classes_
+         # Binarize ytest with shape (n_samples, n_classes)
+-        y_true_bin = label_binarize(y_true, classes=labels)
++        y_true_bin = label_binarize(y_true, classes=self.classes_)
+         
+                 
+         # ✅ Calculate ROC-AUC using probabilities (already normalized from vote_score)
+         try:
+-            y_true_bin = label_binarize(y_true, classes=labels)
++            y_true_bin = label_binarize(y_true, classes=self.classes_)
+             logger.debug(f'y_true_bin shape: {y_true_bin.shape}')
+         
+             # Verify shapes match
+@@ -1099,7 +1147,7 @@ def build_needed_classes(mpath, model_name, train_sample_df2, test_sample_df2, l
+         - Call Classifier Fit method to store training data in classifier   
+     """
+     MODEL_PATH = mpath + model_name
+-    llama_model = LlamaCppWrapper(model_path=MODEL_PATH, n_ctx=4096, n_threads=8, logger= logger)
++    llama_model = LlamaCppWrapper(model_path=MODEL_PATH, n_ctx=4096, n_threads=8, n_batch=512, use_mmap=True,logger=logger)
+     classifier = FewShotDiagnosisClassifier(gemma_model=llama_model)  
+     logger.info("\nFitting classifier with training examples...")
+     classifier.fit(train_sample_df2, logger)
+@@ -1312,8 +1360,11 @@ def main():
+     gpath = Path("E:/Education/GitHub/Generative-MIMIC-Diagnosis/")
+     mpath = 'E:/Education/llama/models'
+     dpath = "E:/Education/CCSU-Thesis-2024/Data/"
+-    lpath = "E:/Education/CCSU-Thesis-2024/Data/"
+-    model_name = "/gemma-3n-E4B-it-Q4_K_M.gguf"
++    trfile = dpath + 'intsl_train_group_full_no2c.snappy.parquet'
++    tsfile = dpath + 'intsl_test_group_full_no2c.snappy.parquet'
++    lpath = "E:/Education/CCSU-Thesis-2024/Data/logs"
++    #model_name = "/gemma-3n-E4B-it-Q4_K_M.gguf"
++    model_name = "/gemma-2-2b-it-q4_k_m.gguf"
+     
+     # Initiate Logger
+     logger = setup_logging(log_dir=lpath, log_level=logging.DEBUG)
+@@ -1331,7 +1382,7 @@ def main():
+         train_sample = 1
+         test_sample = 14
+         seq_size = 1000
+-        train_df, test_df = load_data(dpath, train_sample, test_sample, seq_size, logger)
++        train_df, test_df = load_data(trfile, tsfile, train_sample, test_sample, seq_size, logger)
+ 
+         logger.info("Completed getting data")
+         classifier = build_needed_classes(mpath, model_name, train_df, test_df, logger)

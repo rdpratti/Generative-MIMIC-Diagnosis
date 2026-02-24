@@ -1,0 +1,8 @@
+icd10_code,description
+A41.9,"Sepsis, unspecified organism"
+I21.4,"Acute Subendocardial Myocardial Infarction (I21.4) KEY FEATURES: Acute chest pain, ST-segment changes, elevated cardiac troponins/enzymes, acute coronary event, NEW ischemic changes on EKG"
+I25.10,"Coronary Atherosclerosis (I25.10) KEY FEATURES: Chronic coronary artery disease, stable angina, history of CAD, coronary stenosis on angiography, chronic ischemic heart disease (NOT acute MI)"
+I35.2,"Nonrheumatic Aortic Valve Stenosis with Insufficiency (I35.2) KEY FEATURES: Aortic valve disease, systolic murmur, valve calcification, echocardiogram showing aortic stenosis/regurgitation, valve dysfunction"
+I50.9,"Unspecified Congestive Heart Failure (I50.9) KEY FEATURES: Reduced ejection fraction, pulmonary edema, fluid overload, acute decompensated heart failure, elevated BNP/NT-proBNP"
+J96.00,"Acute respiratory failure unspecified"
+N17.9,"Acute kidney failure unspecified"

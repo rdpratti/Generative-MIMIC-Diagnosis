@@ -1,0 +1,115 @@
+================================================================================
+RAG-ENHANCED PROMPT GENERATION TEST REPORT
+================================================================================
+Generated: 2025-12-18 10:31:44
+Training data: E:/Education/CCSU-Thesis-2024/Data/intsl_train_group_full_no3c.snappy.parquet
+ICD-10 codes: ../data/raw/ICD10-Code-Descriptions.csv
+Output directory: ../data/processed/rag_prompts
+================================================================================
+
+CONFIGURATION:
+--------------------------------------------------------------------------------
+Training examples: 924
+Classes: ['I21.4', 'I25.10', 'I35.2', 'I50.9']
+Test cases per class: 2
+K values tested: [1, 3, 5]
+Total prompts generated: 24
+
+RESULTS BY K VALUE:
+--------------------------------------------------------------------------------
+
+K = 1:
+  Prompts generated: 8
+  Avg examples in prompt: 1.0
+  Avg prompt length: 5606 chars
+  All have diagnosis options: True
+  All have instructions: True
+
+K = 3:
+  Prompts generated: 8
+  Avg examples in prompt: 3.0
+  Avg prompt length: 6722 chars
+  All have diagnosis options: True
+  All have instructions: True
+
+K = 5:
+  Prompts generated: 8
+  Avg examples in prompt: 5.0
+  Avg prompt length: 7838 chars
+  All have diagnosis options: True
+  All have instructions: True
+
+RESULTS BY DIAGNOSIS:
+--------------------------------------------------------------------------------
+
+I21.4:
+  Prompts generated: 6
+  K values: [1, 3, 5]
+
+I25.10:
+  Prompts generated: 6
+  K values: [1, 3, 5]
+
+I35.2:
+  Prompts generated: 6
+  K values: [1, 3, 5]
+
+I50.9:
+  Prompts generated: 6
+  K values: [1, 3, 5]
+
+
+DETAILED RESULTS:
+--------------------------------------------------------------------------------
+ prompt_number  test_case_id true_diagnosis  k  num_examples_in_prompt  has_diagnosis_options  has_instructions                                               filepath  prompt_length
+             1      179237.0          I21.4  1                       1                   True              True  ..\data\processed\rag_prompts\prompt_001_k1_I21.4.txt           4016
+             2      147260.0          I21.4  1                       1                   True              True  ..\data\processed\rag_prompts\prompt_002_k1_I21.4.txt           7178
+             3      112096.0         I25.10  1                       1                   True              True ..\data\processed\rag_prompts\prompt_003_k1_I25.10.txt           4111
+             4      120916.0         I25.10  1                       1                   True              True ..\data\processed\rag_prompts\prompt_004_k1_I25.10.txt           4464
+             5      172048.0          I35.2  1                       1                   True              True  ..\data\processed\rag_prompts\prompt_005_k1_I35.2.txt           4033
+             6      196373.0          I35.2  1                       1                   True              True  ..\data\processed\rag_prompts\prompt_006_k1_I35.2.txt           7655
+             7      199540.0          I50.9  1                       1                   True              True  ..\data\processed\rag_prompts\prompt_007_k1_I50.9.txt           6603
+             8      107432.0          I50.9  1                       1                   True              True  ..\data\processed\rag_prompts\prompt_008_k1_I50.9.txt           6785
+             9      179237.0          I21.4  3                       3                   True              True  ..\data\processed\rag_prompts\prompt_009_k3_I21.4.txt           5132
+            10      147260.0          I21.4  3                       3                   True              True  ..\data\processed\rag_prompts\prompt_010_k3_I21.4.txt           8294
+            11      112096.0         I25.10  3                       3                   True              True ..\data\processed\rag_prompts\prompt_011_k3_I25.10.txt           5227
+            12      120916.0         I25.10  3                       3                   True              True ..\data\processed\rag_prompts\prompt_012_k3_I25.10.txt           5580
+            13      172048.0          I35.2  3                       3                   True              True  ..\data\processed\rag_prompts\prompt_013_k3_I35.2.txt           5149
+            14      196373.0          I35.2  3                       3                   True              True  ..\data\processed\rag_prompts\prompt_014_k3_I35.2.txt           8771
+            15      199540.0          I50.9  3                       3                   True              True  ..\data\processed\rag_prompts\prompt_015_k3_I50.9.txt           7719
+            16      107432.0          I50.9  3                       3                   True              True  ..\data\processed\rag_prompts\prompt_016_k3_I50.9.txt           7901
+            17      179237.0          I21.4  5                       5                   True              True  ..\data\processed\rag_prompts\prompt_017_k5_I21.4.txt           6247
+            18      147260.0          I21.4  5                       5                   True              True  ..\data\processed\rag_prompts\prompt_018_k5_I21.4.txt           9410
+            19      112096.0         I25.10  5                       5                   True              True ..\data\processed\rag_prompts\prompt_019_k5_I25.10.txt           6343
+            20      120916.0         I25.10  5                       5                   True              True ..\data\processed\rag_prompts\prompt_020_k5_I25.10.txt           6696
+            21      172048.0          I35.2  5                       5                   True              True  ..\data\processed\rag_prompts\prompt_021_k5_I35.2.txt           6265
+            22      196373.0          I35.2  5                       5                   True              True  ..\data\processed\rag_prompts\prompt_022_k5_I35.2.txt           9887
+            23      199540.0          I50.9  5                       5                   True              True  ..\data\processed\rag_prompts\prompt_023_k5_I50.9.txt           8835
+            24      107432.0          I50.9  5                       5                   True              True  ..\data\processed\rag_prompts\prompt_024_k5_I50.9.txt           9017
+
+FILES GENERATED:
+--------------------------------------------------------------------------------
+prompt_001_k1_I21.4.txt
+prompt_002_k1_I21.4.txt
+prompt_003_k1_I25.10.txt
+prompt_004_k1_I25.10.txt
+prompt_005_k1_I35.2.txt
+prompt_006_k1_I35.2.txt
+prompt_007_k1_I50.9.txt
+prompt_008_k1_I50.9.txt
+prompt_009_k3_I21.4.txt
+prompt_010_k3_I21.4.txt
+prompt_011_k3_I25.10.txt
+prompt_012_k3_I25.10.txt
+prompt_013_k3_I35.2.txt
+prompt_014_k3_I35.2.txt
+prompt_015_k3_I50.9.txt
+prompt_016_k3_I50.9.txt
+prompt_017_k5_I21.4.txt
+prompt_018_k5_I21.4.txt
+prompt_019_k5_I25.10.txt
+prompt_020_k5_I25.10.txt
+prompt_021_k5_I35.2.txt
+prompt_022_k5_I35.2.txt
+prompt_023_k5_I50.9.txt
+prompt_024_k5_I50.9.txt

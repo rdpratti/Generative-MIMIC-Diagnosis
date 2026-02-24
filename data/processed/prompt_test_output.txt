@@ -1,0 +1,214 @@
+PROMPT GENERATION TEST RESULTS
+================================================================================
+Generated: 2025-12-16 12:28:21.388561
+Training data: E:/Education/CCSU-Thesis-2024/Data/intsl_train_group_full_no3c.snappy.parquet
+ICD-10 CSV: ../data/raw/ICD10-Code-Descriptions.csv
+================================================================================
+
+TEST CASE INFORMATION:
+================================================================================
+Patient ID: 151695.0
+True Diagnosis: I50.9
+Patient Text (first 500 chars):
+resp note pt intubated and ventilated with present settings simv peep ps and tolerating well attempted extubation however after approx min pt breathing became labored and with pt unable to ventilate pt was bagged on fio and subsequently re intubated with ett secured at lip b s coarse and diminished bilat will continue to monitor and will attempt to wean and extubate again in am s p cabg x o arrived sedated on mcq propofol mcq of epi neo restarted upon arrival mcq iv ntg mcq no underlying rythym ...
+
+
+DIAGNOSIS OPTIONS SECTION:
+================================================================================
+Based on the patient's clinical presentation, predict which diagnosis class applies:
+
+                    0 = I21.4 (Acute subendocardial myocardial infarction)
+                    1 = I25.10 (Coronary Atherosclerosis)
+                    2 = I35.2 (Nonrheumatic Aortic (Valve) Stenosis with Insufficiency)
+                    3 = I50.9 (Unspecified Congestive Heart Failure)
+
+ZERO-SHOT PROMPT (No Examples):
+================================================================================
+<start_of_turn>user
+
+You are an experienced attending physician reviewing clinical notes to make a diagnostic assessment.
+
+Based on the patient's clinical presentation, predict which diagnosis class applies:
+
+                    0 = I21.4 (Acute subendocardial myocardial infarction)
+                    1 = I25.10 (Coronary Atherosclerosis)
+                    2 = I35.2 (Nonrheumatic Aortic (Valve) Stenosis with Insufficiency)
+                    3 = I50.9 (Unspecified Congestive Heart Failure)
+
+CRITICAL INSTRUCTIONS:
+- Respond with ONLY a single digit: 0, 1, 2, or 3
+- Do not include the diagnosis code (e.g., A41.9)
+- Do not add any explanation, punctuation, spaces, or newlines
+- Output format: Just the digit, nothing else
+
+Now, review the following new patient case:
+
+Patient ID: 151695.0
+Clinical Note: resp note pt intubated and ventilated with present settings simv peep ps and tolerating well attempted extubation however after approx min pt breathing became labored and with pt unable to ventilate pt was bagged on fio and subsequently re intubated with ett secured at lip b s coarse and diminished bilat will continue to monitor and will attempt to wean and extubate again in am s p cabg x o arrived sedated on mcq propofol mcq of epi neo restarted upon arrival mcq iv ntg mcq no underlying rythym therefore avpaced and no ekg has been obtained due to this cardiac av paced without vea sbp extremely labile times presently on mcq of neo epi o mcq sbp presently ct drainage ml this shift plt ho s aware hct resp po s on therefore increased to with po s leak from ct cxr done due to po and leak no right sided pneumo or other issues noted bs diminished bibasilar sx for a small amount of clear sputum tolerated cpap with good abg and pt pt placed on l np o sat c o incisional pain and recieved mg of iv mso however within minutes pt in respiratory distress stidorus reintubated by anesthesia some edema noted per anesthesia when reintubated good abg post intubation pt to be placed on cpap am abg am and extubation per doctor sx for a small amount of blood tinged sputum o sats please see resp flow for settings neuro perl pinpoint mae following commands propofol restarted and presently mcq post intubation gi ngt reinserted placement drained ml absent bowel sounds gu autodiuresed upon return from or recieved l lr and hespan k replaced x endo sliding scale insulin x skin dsgs d i no breakdown noted social wife into visit and updated a continues on mcq of epi neo mcq reintubated for resp distress temp p monitor comfort hr and rythym sbp resp and neuro status ct drainage i o labs temp as per orders wean to extubate in am rhythm d at ct team in turned off pacer pt in slow sr bp dipped to s a pacer set for a pacing at with sbp taking over patient at apaced but at approx lost capture avpaced then approx hr later st to sr in the s than at drop in rate to junctional avpaced will continue to avp at thru the night vsens to with asens to patient with uneventful night resting comfortable on mcg of propofol able to respond o commands minimal etsecretions good abg at mn continues to be avpaced at with no underlying rhythm as of am able to weaned off epi with good ci now weaning neo as patient becoming more awake ct output subsiding u o adequate wgt up kg this am off propofol attempting to wean extubation d pt this am at without complications weaned to l np with sat bs clear yet diminished in bases pt coughing without raising cpt pt well did not raise any sputum thereafter plan cont to progress activity as encourage db and coughing cpt as needed update d pleasant elderly gentable s p cabg neuro pt awake alert oriented x conversational approp response mae macro degenerative changes in eyes thru difficult to eval pupils cardiac pt av p waves evident only in underlying rhythm ma reduced to on both a and v wires pt weaned of neo easily maintaining a bp resp as noted pt bs dim in bases on l np sat gi bs positive more active as day progressed sips of fluids well appetite fair gu u o excelent with lasix cvp prior to swan removal with pad plan for additional lasix this eve follow k closely pla progress activity and diet as pain initially relieved mso and toradol last dose of toradol at today pt given percocet with fair relief need for tabs now that toradol finished patient back to bed approx pm received percocet tab at then at am sleeping fairly well good response from lasix wgt down kg this am k replaced as ordered continues to drain from ct with turning will follow am labs pending sleeping well after percocet plan to transfer this am transfer note d neuro pt awake alert oriented x approp cardiac avp with sbp pt underlying rhythm nsr at times pt experienced episode of blocked p waves vs chb this pt av paced at thereafter pt then started competing with pace pt own a waves were creating a vpaced rhythm up to pacer then turned off set a demand at unable to set v demand if ma up pt cont to v pace consistently despite own rhythm thus pt placed on a demand of as back up resp pt on l np with sat bs clear in upper lobes slight crackles noted in bases bilat pt given lasix mg ivp this am with excellent diuresis gu pt cont with foley draining yellow urine with some sediment noted last creat gi pt well fair appetite bowel sounds present abd soft slightly distended pain pt c o some inc pain esp with coughing med with percocet with good relief at present does not appear to cause disorientation or dip in bp plan transfer to floor when bed avail progress diet and activity as note pt amb ft in room well bp hr remained sr pt family aware of status and aware of transfer pt has wife_ newlywed and sons who do not live in area pt is a full code
+
+Diagnosis (respond with only the number 0, 1, 2, or 3):<end_of_turn>
+<start_of_turn>model
+
+FEW-SHOT PROMPT (3 Examples):
+================================================================================
+<start_of_turn>user
+
+You are an experienced attending physician reviewing clinical notes to make a diagnostic assessment.
+
+Based on the patient's clinical presentation, predict which diagnosis class applies:
+
+                    0 = I21.4 (Acute subendocardial myocardial infarction)
+                    1 = I25.10 (Coronary Atherosclerosis)
+                    2 = I35.2 (Nonrheumatic Aortic (Valve) Stenosis with Insufficiency)
+                    3 = I50.9 (Unspecified Congestive Heart Failure)
+
+CRITICAL INSTRUCTIONS:
+- Respond with ONLY a single digit: 0, 1, 2, or 3
+- Do not include the diagnosis code (e.g., A41.9)
+- Do not add any explanation, punctuation, spaces, or newlines
+- Output format: Just the digit, nothing else
+
+Here are some similar example cases:
+
+Example 1:
+Clinical Note: ccu nursing admit note yo male w pmh pe on coumadin known r le dvt presented to osh w c o sob and swelling of r leg cta extension of dvt given lovanox troponin elevated to given ceftriaxone and zithro for concern for pna transferred to for further care cxr small bibasal effusions stable appearance to calcified granuloma in l mid zone mild chf cta no new pe small pe in lower lobes bilaterally rml lul increasing mediastinal and hilar lymphadenopathy of etiology small pulmonary nodules in r lung un...
+Diagnosis: 0
+
+Example 2:
+Clinical Note: patient admitted s p cabg x from or intubated and sedated with iv propofol iv neo og in place placement checked patient being a paced with underlying ryhthm s braby co ci acceptable ct s patent for small amt sero sang drainage foley in place patent for clear urine dopplerable pulses family in neuro mae follows commands appears intact cardiac mp a paced underlying rate s sb co ci acceptable able to wean neo off ct s patent for small amt sero sang drainage dopplerable pulses resp cs clear diminish...
+Diagnosis: 1
+
+Example 3:
+Clinical Note: transfer note very pleasant y o wf with nkda pmh includes anemia angina dementia hoh right hearing aide right sided sciatic osteoarthritis ovarian cell tumor s p aortic valvuloplasty htn glucose intolerence aortic stenosis she is s p aortic valvuloplasty with complication of complete heart block pt paced in procedure via left femoral venous sheath admitted to sicu post procedure vpaced bilateral venous catherters on dobutamine drip for hypotension this am vpased sensing only until when venous sh...
+Diagnosis: 2
+
+Example 4:
+Clinical Note: to spike tmax ccu nsg note alt in cv o for complete vs see ccu flow sheet id pt afebrile on abx cv pt went to cath lab and was found to have vd she will be referred to ct surgery pt returned pm sedated with f a line in r groin and swan ganz in r regular a line remains in l hr has ranged s with increasing pacs bp s s s with pap s and cvp sheaths were pulled at without problem and heparin should be restarted at at u without a bolus ivf of ns at cc hr was d c at pm both groins remain stable with no...
+Diagnosis: 3
+
+Now, review the following new patient case:
+
+Patient ID: 151695.0
+Clinical Note: resp note pt intubated and ventilated with present settings simv peep ps and tolerating well attempted extubation however after approx min pt breathing became labored and with pt unable to ventilate pt was bagged on fio and subsequently re intubated with ett secured at lip b s coarse and diminished bilat will continue to monitor and will attempt to wean and extubate again in am s p cabg x o arrived sedated on mcq propofol mcq of epi neo restarted upon arrival mcq iv ntg mcq no underlying rythym therefore avpaced and no ekg has been obtained due to this cardiac av paced without vea sbp extremely labile times presently on mcq of neo epi o mcq sbp presently ct drainage ml this shift plt ho s aware hct resp po s on therefore increased to with po s leak from ct cxr done due to po and leak no right sided pneumo or other issues noted bs diminished bibasilar sx for a small amount of clear sputum tolerated cpap with good abg and pt pt placed on l np o sat c o incisional pain and recieved mg of iv mso however within minutes pt in respiratory distress stidorus reintubated by anesthesia some edema noted per anesthesia when reintubated good abg post intubation pt to be placed on cpap am abg am and extubation per doctor sx for a small amount of blood tinged sputum o sats please see resp flow for settings neuro perl pinpoint mae following commands propofol restarted and presently mcq post intubation gi ngt reinserted placement drained ml absent bowel sounds gu autodiuresed upon return from or recieved l lr and hespan k replaced x endo sliding scale insulin x skin dsgs d i no breakdown noted social wife into visit and updated a continues on mcq of epi neo mcq reintubated for resp distress temp p monitor comfort hr and rythym sbp resp and neuro status ct drainage i o labs temp as per orders wean to extubate in am rhythm d at ct team in turned off pacer pt in slow sr bp dipped to s a pacer set for a pacing at with sbp taking over patient at apaced but at approx lost capture avpaced then approx hr later st to sr in the s than at drop in rate to junctional avpaced will continue to avp at thru the night vsens to with asens to patient with uneventful night resting comfortable on mcg of propofol able to respond o commands minimal etsecretions good abg at mn continues to be avpaced at with no underlying rhythm as of am able to weaned off epi with good ci now weaning neo as patient becoming more awake ct output subsiding u o adequate wgt up kg this am off propofol attempting to wean extubation d pt this am at without complications weaned to l np with sat bs clear yet diminished in bases pt coughing without raising cpt pt well did not raise any sputum thereafter plan cont to progress activity as encourage db and coughing cpt as needed update d pleasant elderly gentable s p cabg neuro pt awake alert oriented x conversational approp response mae macro degenerative changes in eyes thru difficult to eval pupils cardiac pt av p waves evident only in underlying rhythm ma reduced to on both a and v wires pt weaned of neo easily maintaining a bp resp as noted pt bs dim in bases on l np sat gi bs positive more active as day progressed sips of fluids well appetite fair gu u o excelent with lasix cvp prior to swan removal with pad plan for additional lasix this eve follow k closely pla progress activity and diet as pain initially relieved mso and toradol last dose of toradol at today pt given percocet with fair relief need for tabs now that toradol finished patient back to bed approx pm received percocet tab at then at am sleeping fairly well good response from lasix wgt down kg this am k replaced as ordered continues to drain from ct with turning will follow am labs pending sleeping well after percocet plan to transfer this am transfer note d neuro pt awake alert oriented x approp cardiac avp with sbp pt underlying rhythm nsr at times pt experienced episode of blocked p waves vs chb this pt av paced at thereafter pt then started competing with pace pt own a waves were creating a vpaced rhythm up to pacer then turned off set a demand at unable to set v demand if ma up pt cont to v pace consistently despite own rhythm thus pt placed on a demand of as back up resp pt on l np with sat bs clear in upper lobes slight crackles noted in bases bilat pt given lasix mg ivp this am with excellent diuresis gu pt cont with foley draining yellow urine with some sediment noted last creat gi pt well fair appetite bowel sounds present abd soft slightly distended pain pt c o some inc pain esp with coughing med with percocet with good relief at present does not appear to cause disorientation or dip in bp plan transfer to floor when bed avail progress diet and activity as note pt amb ft in room well bp hr remained sr pt family aware of status and aware of transfer pt has wife_ newlywed and sons who do not live in area pt is a full code
+
+Diagnosis (respond with only the number 0, 1, 2, or 3):<end_of_turn>
+<start_of_turn>model
+
+PROMPTS WITH DIFFERENT NUMBERS OF EXAMPLES:
+================================================================================
+
+
+--- PROMPT WITH 1 EXAMPLE(S) ---
+================================================================================
+<start_of_turn>user
+
+You are an experienced attending physician reviewing clinical notes to make a diagnostic assessment.
+
+Based on the patient's clinical presentation, predict which diagnosis class applies:
+
+                    0 = I21.4 (Acute subendocardial myocardial infarction)
+                    1 = I25.10 (Coronary Atherosclerosis)
+                    2 = I35.2 (Nonrheumatic Aortic (Valve) Stenosis with Insufficiency)
+                    3 = I50.9 (Unspecified Congestive Heart Failure)
+
+CRITICAL INSTRUCTIONS:
+- Respond with ONLY a single digit: 0, 1, 2, or 3
+- Do not include the diagnosis code (e.g., A41.9)
+- Do not add any explanation, punctuation, spaces, or newlines
+- Output format: Just the digit, nothing else
+
+Here are some similar example cases:
+
+Example 1:
+Clinical Note: ccu nursing admit note yo male w pmh pe on coumadin known r le dvt presented to osh w c o sob and swelling of r leg cta extension of dvt given lovanox troponin elevated to given ceftriaxone and zithro for concern for pna transferred to for further care cxr small bibasal effusions stable appearance to calcified granuloma in l mid zone mild chf cta no new pe small pe in lower lobes bilaterally rml lul increasing mediastinal and hilar lymphadenopathy of etiology small pulmonary nodules in r lung un...
+Diagnosis: 0
+
+Now, review the following new patient case:
+
+Patient ID: 151695.0
+Clinical Note: resp note pt intubated and ventilated with present settings simv peep ps and tolerating well attempted extubation however after approx min pt breathing became labored and with pt unable to ventilate pt was bagged on fio and subsequently re intubated with ett secured at lip b s coarse and diminished bilat will continue to monitor and will attempt to wean and extubate again in am s p cabg x o arrived sedated on mcq propofol mcq of epi neo restarted upon arrival mcq iv ntg mcq no underlying rythym therefore avpaced and no ekg has been obtained due to this cardiac av paced without vea sbp extremely labile times presently on mcq of neo epi o mcq sbp presently ct drainage ml this shift plt ho s aware hct resp po s on therefore increased to with po s leak from ct cxr done due to po and leak no right sided pneumo or other issues noted bs diminished bibasilar sx for a small amount of clear sputum tolerated cpap with good abg and pt pt placed on l np o sat c o incisional pain and recieved mg of iv mso however within minutes pt in respiratory distress stidorus reintubated by anesthesia some edema noted per anesthesia when reintubated good abg post intubation pt to be placed on cpap am abg am and extubation per doctor sx for a small amount of blood tinged sputum o sats please see resp flow for settings neuro perl pinpoint mae following commands propofol restarted and presently mcq post intubation gi ngt reinserted placement drained ml absent bowel sounds gu autodiuresed upon return from or recieved l lr and hespan k replaced x endo sliding scale insulin x skin dsgs d i no breakdown noted social wife into visit and updated a continues on mcq of epi neo mcq reintubated for resp distress temp p monitor comfort hr and rythym sbp resp and neuro status ct drainage i o labs temp as per orders wean to extubate in am rhythm d at ct team in turned off pacer pt in slow sr bp dipped to s a pacer set for a pacing at with sbp taking over patient at apaced but at approx lost capture avpaced then approx hr later st to sr in the s than at drop in rate to junctional avpaced will continue to avp at thru the night vsens to with asens to patient with uneventful night resting comfortable on mcg of propofol able to respond o commands minimal etsecretions good abg at mn continues to be avpaced at with no underlying rhythm as of am able to weaned off epi with good ci now weaning neo as patient becoming more awake ct output subsiding u o adequate wgt up kg this am off propofol attempting to wean extubation d pt this am at without complications weaned to l np with sat bs clear yet diminished in bases pt coughing without raising cpt pt well did not raise any sputum thereafter plan cont to progress activity as encourage db and coughing cpt as needed update d pleasant elderly gentable s p cabg neuro pt awake alert oriented x conversational approp response mae macro degenerative changes in eyes thru difficult to eval pupils cardiac pt av p waves evident only in underlying rhythm ma reduced to on both a and v wires pt weaned of neo easily maintaining a bp resp as noted pt bs dim in bases on l np sat gi bs positive more active as day progressed sips of fluids well appetite fair gu u o excelent with lasix cvp prior to swan removal with pad plan for additional lasix this eve follow k closely pla progress activity and diet as pain initially relieved mso and toradol last dose of toradol at today pt given percocet with fair relief need for tabs now that toradol finished patient back to bed approx pm received percocet tab at then at am sleeping fairly well good response from lasix wgt down kg this am k replaced as ordered continues to drain from ct with turning will follow am labs pending sleeping well after percocet plan to transfer this am transfer note d neuro pt awake alert oriented x approp cardiac avp with sbp pt underlying rhythm nsr at times pt experienced episode of blocked p waves vs chb this pt av paced at thereafter pt then started competing with pace pt own a waves were creating a vpaced rhythm up to pacer then turned off set a demand at unable to set v demand if ma up pt cont to v pace consistently despite own rhythm thus pt placed on a demand of as back up resp pt on l np with sat bs clear in upper lobes slight crackles noted in bases bilat pt given lasix mg ivp this am with excellent diuresis gu pt cont with foley draining yellow urine with some sediment noted last creat gi pt well fair appetite bowel sounds present abd soft slightly distended pain pt c o some inc pain esp with coughing med with percocet with good relief at present does not appear to cause disorientation or dip in bp plan transfer to floor when bed avail progress diet and activity as note pt amb ft in room well bp hr remained sr pt family aware of status and aware of transfer pt has wife_ newlywed and sons who do not live in area pt is a full code
+
+Diagnosis (respond with only the number 0, 1, 2, or 3):<end_of_turn>
+<start_of_turn>model
+
+
+--- PROMPT WITH 5 EXAMPLE(S) ---
+================================================================================
+<start_of_turn>user
+
+You are an experienced attending physician reviewing clinical notes to make a diagnostic assessment.
+
+Based on the patient's clinical presentation, predict which diagnosis class applies:
+
+                    0 = I21.4 (Acute subendocardial myocardial infarction)
+                    1 = I25.10 (Coronary Atherosclerosis)
+                    2 = I35.2 (Nonrheumatic Aortic (Valve) Stenosis with Insufficiency)
+                    3 = I50.9 (Unspecified Congestive Heart Failure)
+
+CRITICAL INSTRUCTIONS:
+- Respond with ONLY a single digit: 0, 1, 2, or 3
+- Do not include the diagnosis code (e.g., A41.9)
+- Do not add any explanation, punctuation, spaces, or newlines
+- Output format: Just the digit, nothing else
+
+Here are some similar example cases:
+
+Example 1:
+Clinical Note: ccu nursing admit note yo male w pmh pe on coumadin known r le dvt presented to osh w c o sob and swelling of r leg cta extension of dvt given lovanox troponin elevated to given ceftriaxone and zithro for concern for pna transferred to for further care cxr small bibasal effusions stable appearance to calcified granuloma in l mid zone mild chf cta no new pe small pe in lower lobes bilaterally rml lul increasing mediastinal and hilar lymphadenopathy of etiology small pulmonary nodules in r lung un...
+Diagnosis: 0
+
+Example 2:
+Clinical Note: patient admitted s p cabg x from or intubated and sedated with iv propofol iv neo og in place placement checked patient being a paced with underlying ryhthm s braby co ci acceptable ct s patent for small amt sero sang drainage foley in place patent for clear urine dopplerable pulses family in neuro mae follows commands appears intact cardiac mp a paced underlying rate s sb co ci acceptable able to wean neo off ct s patent for small amt sero sang drainage dopplerable pulses resp cs clear diminish...
+Diagnosis: 1
+
+Example 3:
+Clinical Note: transfer note very pleasant y o wf with nkda pmh includes anemia angina dementia hoh right hearing aide right sided sciatic osteoarthritis ovarian cell tumor s p aortic valvuloplasty htn glucose intolerence aortic stenosis she is s p aortic valvuloplasty with complication of complete heart block pt paced in procedure via left femoral venous sheath admitted to sicu post procedure vpaced bilateral venous catherters on dobutamine drip for hypotension this am vpased sensing only until when venous sh...
+Diagnosis: 2
+
+Example 4:
+Clinical Note: to spike tmax ccu nsg note alt in cv o for complete vs see ccu flow sheet id pt afebrile on abx cv pt went to cath lab and was found to have vd she will be referred to ct surgery pt returned pm sedated with f a line in r groin and swan ganz in r regular a line remains in l hr has ranged s with increasing pacs bp s s s with pap s and cvp sheaths were pulled at without problem and heparin should be restarted at at u without a bolus ivf of ns at cc hr was d c at pm both groins remain stable with no...
+Diagnosis: 3
+
+Now, review the following new patient case:
+
+Patient ID: 151695.0
+Clinical Note: resp note pt intubated and ventilated with present settings simv peep ps and tolerating well attempted extubation however after approx min pt breathing became labored and with pt unable to ventilate pt was bagged on fio and subsequently re intubated with ett secured at lip b s coarse and diminished bilat will continue to monitor and will attempt to wean and extubate again in am s p cabg x o arrived sedated on mcq propofol mcq of epi neo restarted upon arrival mcq iv ntg mcq no underlying rythym therefore avpaced and no ekg has been obtained due to this cardiac av paced without vea sbp extremely labile times presently on mcq of neo epi o mcq sbp presently ct drainage ml this shift plt ho s aware hct resp po s on therefore increased to with po s leak from ct cxr done due to po and leak no right sided pneumo or other issues noted bs diminished bibasilar sx for a small amount of clear sputum tolerated cpap with good abg and pt pt placed on l np o sat c o incisional pain and recieved mg of iv mso however within minutes pt in respiratory distress stidorus reintubated by anesthesia some edema noted per anesthesia when reintubated good abg post intubation pt to be placed on cpap am abg am and extubation per doctor sx for a small amount of blood tinged sputum o sats please see resp flow for settings neuro perl pinpoint mae following commands propofol restarted and presently mcq post intubation gi ngt reinserted placement drained ml absent bowel sounds gu autodiuresed upon return from or recieved l lr and hespan k replaced x endo sliding scale insulin x skin dsgs d i no breakdown noted social wife into visit and updated a continues on mcq of epi neo mcq reintubated for resp distress temp p monitor comfort hr and rythym sbp resp and neuro status ct drainage i o labs temp as per orders wean to extubate in am rhythm d at ct team in turned off pacer pt in slow sr bp dipped to s a pacer set for a pacing at with sbp taking over patient at apaced but at approx lost capture avpaced then approx hr later st to sr in the s than at drop in rate to junctional avpaced will continue to avp at thru the night vsens to with asens to patient with uneventful night resting comfortable on mcg of propofol able to respond o commands minimal etsecretions good abg at mn continues to be avpaced at with no underlying rhythm as of am able to weaned off epi with good ci now weaning neo as patient becoming more awake ct output subsiding u o adequate wgt up kg this am off propofol attempting to wean extubation d pt this am at without complications weaned to l np with sat bs clear yet diminished in bases pt coughing without raising cpt pt well did not raise any sputum thereafter plan cont to progress activity as encourage db and coughing cpt as needed update d pleasant elderly gentable s p cabg neuro pt awake alert oriented x conversational approp response mae macro degenerative changes in eyes thru difficult to eval pupils cardiac pt av p waves evident only in underlying rhythm ma reduced to on both a and v wires pt weaned of neo easily maintaining a bp resp as noted pt bs dim in bases on l np sat gi bs positive more active as day progressed sips of fluids well appetite fair gu u o excelent with lasix cvp prior to swan removal with pad plan for additional lasix this eve follow k closely pla progress activity and diet as pain initially relieved mso and toradol last dose of toradol at today pt given percocet with fair relief need for tabs now that toradol finished patient back to bed approx pm received percocet tab at then at am sleeping fairly well good response from lasix wgt down kg this am k replaced as ordered continues to drain from ct with turning will follow am labs pending sleeping well after percocet plan to transfer this am transfer note d neuro pt awake alert oriented x approp cardiac avp with sbp pt underlying rhythm nsr at times pt experienced episode of blocked p waves vs chb this pt av paced at thereafter pt then started competing with pace pt own a waves were creating a vpaced rhythm up to pacer then turned off set a demand at unable to set v demand if ma up pt cont to v pace consistently despite own rhythm thus pt placed on a demand of as back up resp pt on l np with sat bs clear in upper lobes slight crackles noted in bases bilat pt given lasix mg ivp this am with excellent diuresis gu pt cont with foley draining yellow urine with some sediment noted last creat gi pt well fair appetite bowel sounds present abd soft slightly distended pain pt c o some inc pain esp with coughing med with percocet with good relief at present does not appear to cause disorientation or dip in bp plan transfer to floor when bed avail progress diet and activity as note pt amb ft in room well bp hr remained sr pt family aware of status and aware of transfer pt has wife_ newlywed and sons who do not live in area pt is a full code
+
+Diagnosis (respond with only the number 0, 1, 2, or 3):<end_of_turn>
+<start_of_turn>model
+
+
+TRAINING DATA STATISTICS:
+================================================================================
+Total examples: 924
+Unique patients: 440
+
+Diagnosis distribution:
+  I21.4: 325 (35.2%)
+  I25.10: 179 (19.4%)
+  I35.2: 225 (24.4%)
+  I50.9: 195 (21.1%)
+
+
+EXAMPLE CASES USED IN PROMPTS:
+================================================================================
+
+Example 1:
+  Diagnosis Index: 0
+  Diagnosis Code: I21.4
+  Text (first 300 chars): ccu nursing admit note yo male w pmh pe on coumadin known r le dvt presented to osh w c o sob and swelling of r leg cta extension of dvt given lovanox troponin elevated to given ceftriaxone and zithro for concern for pna transferred to for further care cxr small bibasal effusions stable appearance t...
+
+Example 2:
+  Diagnosis Index: 1
+  Diagnosis Code: I25.10
+  Text (first 300 chars): patient admitted s p cabg x from or intubated and sedated with iv propofol iv neo og in place placement checked patient being a paced with underlying ryhthm s braby co ci acceptable ct s patent for small amt sero sang drainage foley in place patent for clear urine dopplerable pulses family in neuro ...
+
+Example 3:
+  Diagnosis Index: 2
+  Diagnosis Code: I35.2
+  Text (first 300 chars): transfer note very pleasant y o wf with nkda pmh includes anemia angina dementia hoh right hearing aide right sided sciatic osteoarthritis ovarian cell tumor s p aortic valvuloplasty htn glucose intolerence aortic stenosis she is s p aortic valvuloplasty with complication of complete heart block pt ...
+
+Example 4:
+  Diagnosis Index: 3
+  Diagnosis Code: I50.9
+  Text (first 300 chars): to spike tmax ccu nsg note alt in cv o for complete vs see ccu flow sheet id pt afebrile on abx cv pt went to cath lab and was found to have vd she will be referred to ct surgery pt returned pm sedated with f a line in r groin and swan ganz in r regular a line remains in l hr has ranged s with incre...

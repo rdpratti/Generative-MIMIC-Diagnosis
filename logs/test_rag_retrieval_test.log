@@ -1,0 +1,125 @@
+2025-12-26 11:44:14,514 - INFO - ================================================================================
+2025-12-26 11:44:14,514 - INFO - TESTING RAG RETRIEVAL
+2025-12-26 11:44:14,514 - INFO - ================================================================================
+2025-12-26 11:44:14,514 - INFO - 
+Loading training data from: E:/Education/CCSU-Thesis-2024/Data/intsl_train_group_full_no3c.snappy.parquet
+2025-12-26 11:44:14,551 - INFO - Creating subsequences (max 1000 chars)...
+2025-12-26 11:44:14,551 - INFO - Shape before: (440, 4)
+2025-12-26 11:44:15,018 - INFO - Shape after: (924, 4)
+2025-12-26 11:44:15,018 - INFO - Classes: ['I21.4', 'I25.10', 'I35.2', 'I50.9']
+2025-12-26 11:44:15,021 - INFO - 
+================================================================================
+2025-12-26 11:44:15,021 - INFO - TEST 1: Building RAG Index
+2025-12-26 11:44:15,021 - INFO - ================================================================================
+2025-12-26 11:44:15,023 - INFO - \u2713 Imports successful
+2025-12-26 11:44:15,024 - INFO - \u2713 MedicalRAGRetriever imported successfully
+2025-12-26 11:44:15,024 - INFO - 
+Initializing RAG components...
+2025-12-26 11:44:15,024 - INFO - Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2025-12-26 11:44:15,026 - INFO - Use pytorch device_name: cpu
+2025-12-26 11:44:15,026 - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-12-26 11:44:16,853 - INFO - \u2713 RAG retriever initialized
+2025-12-26 11:44:16,862 - INFO - Loaded 7 ICD-10 codes from ../data/raw/ICD10-Code-Descriptions.csv
+2025-12-26 11:44:16,862 - INFO - \u2713 RAG classifier initialized
+2025-12-26 11:44:16,862 - INFO - 
+Building RAG index...
+2025-12-26 11:44:16,862 - INFO - Training data: 924 examples
+2025-12-26 11:44:16,862 - INFO - Diagnoses: ['I21.4', 'I25.10', 'I35.2', 'I50.9']
+2025-12-26 11:44:16,862 - INFO - Building RAG index from training examples...
+2025-12-26 11:44:16,862 - INFO - Building RAG index from 924 examples...
+2025-12-26 11:44:16,863 - INFO - Generating embeddings...
+2025-12-26 11:44:34,634 - INFO - Building FAISS index...
+2025-12-26 11:44:34,636 - INFO - Index built with 924 vectors of dimension 384
+2025-12-26 11:44:34,688 - INFO - Index saved to rag_index
+2025-12-26 11:44:34,688 - INFO - RAG classifier fitted with 924 examples
+2025-12-26 11:44:34,688 - INFO - Classes: ['I21.4', 'I25.10', 'I35.2', 'I50.9']
+2025-12-26 11:44:34,688 - INFO - \u2713 RAG index built successfully!
+2025-12-26 11:44:34,688 - INFO - \u2713 Classes: ['I21.4', 'I25.10', 'I35.2', 'I50.9']
+2025-12-26 11:44:34,688 - INFO - \u2713 Index size: 924 examples
+2025-12-26 11:44:34,688 - INFO - 
+Verifying index...
+2025-12-26 11:44:34,688 - INFO - \u2713 Index files found at: rag_index
+2025-12-26 11:44:34,689 - INFO -   Files: ['embeddings.npy', 'examples.parquet', 'faiss_index.bin']
+2025-12-26 11:44:34,689 - INFO - 
+Testing retrieval...
+2025-12-26 11:44:34,689 - INFO - Query case ID: 150575.0
+2025-12-26 11:44:34,689 - INFO - Query diagnosis: I21.4
+2025-12-26 11:44:34,689 - INFO - Query text (first 150 chars): micu b rn note pt received from osh via ambulance a ox with poor short term memory c o substernal cp on nitro mcg kg min nonradiating ecg with changes...
+2025-12-26 11:44:34,743 - INFO - 
+\u2713 Retrieved 3 similar examples:
+2025-12-26 11:44:34,744 - INFO -   Example 599:
+2025-12-26 11:44:34,744 - INFO -     ID: 120570.0
+2025-12-26 11:44:34,744 - INFO -     Diagnosis: I35.2
+2025-12-26 11:44:34,744 - INFO -     Text preview: neuro intact cardiac ns without ectopy pacer off co ci acceptable after liters rl and unit cells ct ...
+2025-12-26 11:44:34,744 - INFO -   Example 86:
+2025-12-26 11:44:34,744 - INFO -     ID: 171685.0
+2025-12-26 11:44:34,744 - INFO -     Diagnosis: I21.4
+2025-12-26 11:44:34,744 - INFO -     Text preview: to mcg kg w o change levo added at mcg kg min maps now hr sr w no vea pad s iabp good augmentation a...
+2025-12-26 11:44:34,744 - INFO -   Example 856:
+2025-12-26 11:44:34,744 - INFO -     ID: 114177.0
+2025-12-26 11:44:34,745 - INFO -     Diagnosis: I50.9
+2025-12-26 11:44:34,745 - INFO -     Text preview: ccu npn and admission note please see flowsheet for objective data yo man transferred to ccu for pa ...
+2025-12-26 11:44:34,745 - INFO - 
+\u2713 TEST 1 COMPLETE: RAG index built and tested successfully!
+2025-12-26 11:44:34,745 - INFO - 
+================================================================================
+2025-12-26 11:44:34,745 - INFO - TEST 2: Data Quality Checks for RAG
+2025-12-26 11:44:34,745 - INFO - ================================================================================
+2025-12-26 11:44:34,746 - INFO - Empty texts: 0
+2025-12-26 11:44:34,746 - INFO - \u2713 No empty texts
+2025-12-26 11:44:34,746 - INFO - 
+Text length statistics:
+2025-12-26 11:44:34,747 - INFO -   Mean: 4283 chars
+2025-12-26 11:44:34,747 - INFO -   Median: 5222 chars
+2025-12-26 11:44:34,747 - INFO -   Min: 64 chars
+2025-12-26 11:44:34,747 - INFO -   Max: 6425 chars
+2025-12-26 11:44:34,747 - INFO - 
+Examples per diagnosis:
+2025-12-26 11:44:34,748 - INFO -   I21.4:  325 ( 35.2%)
+2025-12-26 11:44:34,748 - INFO -   I25.10:  179 ( 19.4%)
+2025-12-26 11:44:34,748 - INFO -   I35.2:  225 ( 24.4%)
+2025-12-26 11:44:34,748 - INFO -   I50.9:  195 ( 21.1%)
+2025-12-26 11:44:34,748 - INFO - 
+================================================================================
+2025-12-26 11:44:34,750 - INFO - TEST 3: Sample Queries (One Per Diagnosis)
+2025-12-26 11:44:34,750 - INFO - ================================================================================
+2025-12-26 11:44:34,751 - INFO - 
+I21.4:
+2025-12-26 11:44:34,751 - INFO -   ID: 179237.0
+2025-12-26 11:44:34,751 - INFO -   Text length: 2475 chars
+2025-12-26 11:44:34,751 - INFO -   Text preview: ccu nursing admit note yo male w pmh pe on coumadin known r le dvt presented to osh w c o sob and swelling of r leg cta extension of dvt given lovanox...
+2025-12-26 11:44:34,752 - INFO - 
+I25.10:
+2025-12-26 11:44:34,752 - INFO -   ID: 112096.0
+2025-12-26 11:44:34,752 - INFO -   Text length: 2570 chars
+2025-12-26 11:44:34,752 - INFO -   Text preview: patient admitted s p cabg x from or intubated and sedated with iv propofol iv neo og in place placement checked patient being a paced with underlying ...
+2025-12-26 11:44:34,752 - INFO - 
+I35.2:
+2025-12-26 11:44:34,752 - INFO -   ID: 172048.0
+2025-12-26 11:44:34,752 - INFO -   Text length: 2492 chars
+2025-12-26 11:44:34,752 - INFO -   Text preview: transfer note very pleasant y o wf with nkda pmh includes anemia angina dementia hoh right hearing aide right sided sciatic osteoarthritis ovarian cel...
+2025-12-26 11:44:34,753 - INFO - 
+I50.9:
+2025-12-26 11:44:34,755 - INFO -   ID: 199540.0
+2025-12-26 11:44:34,755 - INFO -   Text length: 5064 chars
+2025-12-26 11:44:34,755 - INFO -   Text preview: to spike tmax ccu nsg note alt in cv o for complete vs see ccu flow sheet id pt afebrile on abx cv pt went to cath lab and was found to have vd she wi...
+2025-12-26 11:44:34,761 - INFO - 
+\u2713 Test cases saved to: ../data/processed/rag_test_cases.csv
+2025-12-26 11:44:34,761 - INFO - 
+================================================================================
+2025-12-26 11:44:34,761 - INFO - TEST 4: Check for Duplicates
+2025-12-26 11:44:34,761 - INFO - ================================================================================
+2025-12-26 11:44:34,763 - INFO - Duplicate texts: 0
+2025-12-26 11:44:34,763 - INFO - \u2713 No duplicate texts
+2025-12-26 11:44:34,763 - INFO - 
+================================================================================
+2025-12-26 11:44:34,763 - INFO - SUMMARY
+2025-12-26 11:44:34,763 - INFO - ================================================================================
+2025-12-26 11:44:34,763 - INFO - \u2713 Data loaded successfully
+2025-12-26 11:44:34,763 - INFO - \u2713 Data ready for RAG indexing
+2025-12-26 11:44:34,763 - INFO - \u2713 4 test cases prepared (one per diagnosis)
+2025-12-26 11:44:34,763 - INFO - 
+Next steps:
+2025-12-26 11:44:34,763 - INFO - 1. Initialize MedicalRAGRetriever
+2025-12-26 11:44:34,763 - INFO - 2. Build index with this training data
+2025-12-26 11:44:34,764 - INFO - 3. Test retrieval with saved test cases

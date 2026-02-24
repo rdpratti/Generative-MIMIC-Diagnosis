@@ -1,0 +1,60 @@
+================================================================================
+PROMPT #20 - RAG-ENHANCED FEW-SHOT
+================================================================================
+Generated: 20251218_103144
+Test Case ID: 120916.0
+True Diagnosis: I25.10
+K (examples retrieved): 5
+================================================================================
+
+<start_of_turn>user
+
+        You are an experienced attending physician reviewing clinical notes to make a diagnostic assessment.
+
+        Based on the patient's clinical presentation, predict which diagnosis class applies:
+
+                    0 = I21.4 (Acute subendocardial myocardial infarction)
+                    1 = I25.10 (Coronary Atherosclerosis)
+                    2 = I35.2 (Nonrheumatic Aortic (Valve) Stenosis with Insufficiency)
+                    3 = I50.9 (Unspecified Congestive Heart Failure)
+
+    CRITICAL INSTRUCTIONS:
+    - Respond with ONLY a single digit: 0, 1, 2, or 3
+    - Do not include the diagnosis code (e.g., A41.9)
+    - Do not add any explanation, punctuation, spaces, or newlines
+    - Output format: Just the digit, nothing else
+
+    Here are some similar example cases:
+
+Example 368:
+    Clinical Note: s p cabg x neuro arrived on propofol reversals given propofol weaned to off mso prn pain w transient effect toradol added w good effect a o x mae follows commands post extubation cv skin nsr w hr s w rare pvc s noted epicardial wires attached pacer set for ademand at low dose neo to keep sbp ci ct drainage minimal palp pp bilat k ca repleted resp lungs clear vent weaned pt extubated to l nc sat s gi gu bs og w bilious drainage og d c d w extubation tolerating ice chips uop hr id afebrile vanco d...
+    Diagnosis: 1
+
+    Example 387:
+    Clinical Note: weaned extubated w o incident performs deep breathing well w prompting instructed in incisional splinting w pillow c r thick brown flecked material lg urine output low cvp w episodic hypotension to s responded well to volume tolerateing clear liqs advanced to sliding scale for glucose coverage pain well controlled w percocet toradol daughter in questions answered post op activity booklet given to daughter plan advance diet activity plan dc home neuro completely intact mae c o lt hand slight numb...
+    Diagnosis: 1
+
+    Example 261:
+    Clinical Note: resp care pt extubated from w vts mls rr spo on fio acceptable abgs and leak test prior to extubation no stridor noted pt tolerating cool neb well this time no apparent distress s p cabg x s my chest really hurts o cardiac sr st without vea sbp required neo to mcq presently off ct drainage minimal dsgs d i hct recieved no fluid per doctor febrile to doctor and aware recieved bath and mg tylenol x resp extubated without incident open face mask with o sats weak cough is q hour bs course cleared wi...
+    Diagnosis: 0
+
+    Example 686:
+    Clinical Note: shift note pt hemodynamically stable snp for htn pt weaned from vent and extubated without any problems pt is sleepy but neuros are intact mso and toradol for pain pt update pt a o x resp sats on l np bs clear sl decreased in bases doing fairly well with coughing and deep breathing taught to use is cardiac hr somewhat hyptertensive this am sbp s started on lopressor and captopril and now sbp by cuff pa line and aline d c d ci excellent before pa d c d gu u o good started on lasix this am with fa...
+    Diagnosis: 2
+
+    Example 560:
+    Clinical Note: prob s p avr cv sr no vea noted pacer sensing and capturing presently in a demand with rate of initial ct drainage cc pt had been oozy in or act given protamine mg iv ct drainage slowed down since ntg on and off to keep sbp med for pain x with mso mg and toradol with fair effect kcl anc caglu replaced resp initially on peep for question of bleeding pt initially acidotic pt now being weaned gu uop adequate gi ngt draining clear to pink drainage carafate given bowel sounds absent neuro mae perl fo...
+    Diagnosis: 2
+
+    Now, review the following new patient case:
+
+Patient ID: 120916.0
+Clinical Note: extubated w o incident np face mask for mouth breathing c r thick bloody sputum upper palate tear noted in o r after temp probe removed excellent hemodynamics with minimal volume self diuresis toradol given for pain transfer note d cabg x post op course uneventful extubated at neuro pt awake alert orient x mae approp conversation follows commands cardiac hr s sr no ectopy noted weaned of nipride this am sbp palp pulses weak bilat resp pt weaned to l np with sat coughing without raising bs clear thru out gi pt abd soft non tender bowel sounds hypoactive pt vomited x guaiac trace pt vomited after using pt held breath much to long vomited this am after drinking water med with reglan with good results tol sipd well thereafter gu u o approx cc hr lasix mg ivp given with mod diuresis creat wnl activity pt oob to chair x tol well excellent on his feet pain pt receiving toradol mg and perocet for pain pt c o pain back of neck right side plan transfer to floor progress diet and activity shift note pt is neurologically intact mae to command pt is hoh but appropriate pt uncomfortable in bed repositioned frequently and tx with ms and percocet with some effect hemodynamics as per flowsheet snp for mild htn lungs are cta but diminished pt encouraged to cough and deep breathe u o is qs hypoactive bs pt with some nausea that resolved see flowsheet for details ekg nsr with freq to occ pacs sbp received lopressor afebrile excellent diuresis with lasix k ca mg repleted breath sounds clear bilat deep breathes well uses is with help spo on l nc small amts serosang drainage in pleurevac especially after turning chest dressing dry r leg drsg intact abd soft bowel sounds present tolerating water and ice chips without n v all night problem taking pills still c o r shoulder back discomfort some incisionsl pain relieved with percocet alert and usually oriented evidenced some confusion over routine do i have to pay separately for the bath slept in naps update d pt ready for transfer to floor awaiting bed day neuro pt awake alert confused at times in regards to getting up walking in room getting oob with side rails pt asked to call nurse before he gets up pt independent and very stable on his feet mae good strength c o ha this afternoon cardiac pt remains in nsr with rare pac sbp hr pt cont on lopressor mg po bid need to inc to mg palp pedal pulses resp r a sat bs clear temp up to today encouraged to db and coughm spirocare done coughing without raising today gi pt small amt of po s well appetite fair c o need to move bowels to commode at least times today positive for flatus only gu pt diuresis well u o cc hr creat wnl activity pt amb well amb in x today p t working with pt pain pt c o right neck pain warm pack applied with some relief c o some inc chest pain wondering why med with percocet with good relief plan progress diet and activitiy as transfer pt to floor in am promised there would be a bed
+
+Diagnosis (respond with only the number 0, 1, 2, or 3):<end_of_turn>
+<start_of_turn>model
+
+================================================================================
+TEST CASE TEXT:
+================================================================================
+extubated w o incident np face mask for mouth breathing c r thick bloody sputum upper palate tear noted in o r after temp probe removed excellent hemodynamics with minimal volume self diuresis toradol given for pain transfer note d cabg x post op course uneventful extubated at neuro pt awake alert orient x mae approp conversation follows commands cardiac hr s sr no ectopy noted weaned of nipride this am sbp palp pulses weak bilat resp pt weaned to l np with sat coughing without raising bs clear thru out gi pt abd soft non tender bowel sounds hypoactive pt vomited x guaiac trace pt vomited after using pt held breath much to long vomited this am after drinking water med with reglan with good results tol sipd well thereafter gu u o approx cc hr lasix mg ivp given with mod diuresis creat wnl activity pt oob to chair x tol well excellent on his feet pain pt receiving toradol mg and perocet for pain pt c o pain back of neck right side plan transfer to floor progress diet and activity shift note pt is neurologically intact mae to command pt is hoh but appropriate pt uncomfortable in bed repositioned frequently and tx with ms and percocet with some effect hemodynamics as per flowsheet snp for mild htn lungs are cta but diminished pt encouraged to cough and deep breathe u o is qs hypoactive bs pt with some nausea that resolved see flowsheet for details ekg nsr with freq to occ pacs sbp received lopressor afebrile excellent diuresis with lasix k ca mg repleted breath sounds clear bilat deep breathes well uses is with help spo on l nc small amts serosang drainage in pleurevac especially after turning chest dressing dry r leg drsg intact abd soft bowel sounds present tolerating water and ice chips without n v all night problem taking pills still c o r shoulder back discomfort some incisionsl pain relieved with percocet alert and usually oriented evidenced some confusion over routine do i have to pay separately for the bath slept in naps update d pt ready for transfer to floor awaiting bed day neuro pt awake alert confused at times in regards to getting up walking in room getting oob with side rails pt asked to call nurse before he gets up pt independent and very stable on his feet mae good strength c o ha this afternoon cardiac pt remains in nsr with rare pac sbp hr pt cont on lopressor mg po bid need to inc to mg palp pedal pulses resp r a sat bs clear temp up to today encouraged to db and coughm spirocare done coughing without raising today gi pt small amt of po s well appetite fair c o need to move bowels to commode at least times today positive for flatus only gu pt diuresis well u o cc hr creat wnl activity pt amb well amb in x today p t working with pt pain pt c o right neck pain warm pack applied with some relief c o some inc chest pain wondering why med with percocet with good relief plan progress diet and activitiy as transfer pt to floor in am promised there would be a bed

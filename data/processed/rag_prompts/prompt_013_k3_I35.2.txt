@@ -1,0 +1,52 @@
+================================================================================
+PROMPT #13 - RAG-ENHANCED FEW-SHOT
+================================================================================
+Generated: 20251218_103143
+Test Case ID: 172048.0
+True Diagnosis: I35.2
+K (examples retrieved): 3
+================================================================================
+
+<start_of_turn>user
+
+        You are an experienced attending physician reviewing clinical notes to make a diagnostic assessment.
+
+        Based on the patient's clinical presentation, predict which diagnosis class applies:
+
+                    0 = I21.4 (Acute subendocardial myocardial infarction)
+                    1 = I25.10 (Coronary Atherosclerosis)
+                    2 = I35.2 (Nonrheumatic Aortic (Valve) Stenosis with Insufficiency)
+                    3 = I50.9 (Unspecified Congestive Heart Failure)
+
+    CRITICAL INSTRUCTIONS:
+    - Respond with ONLY a single digit: 0, 1, 2, or 3
+    - Do not include the diagnosis code (e.g., A41.9)
+    - Do not add any explanation, punctuation, spaces, or newlines
+    - Output format: Just the digit, nothing else
+
+    Here are some similar example cases:
+
+Example 251:
+    Clinical Note: ccu npn s i can t believe i had a heart attack o see carevue for all objective data cv pain free hr sr no vea started on lopressor mg tolerated well bp generally down to s after captopril mg at sheaths removed from r groin w problem area d i distal pulses palpabable ck trending down at resp lungs cta diminished at bases while sleeping sats on lnp gu u o cc hr ns restarted at cc hr x l at currently even gi poor appitite no stool id afebrile social brothers and sons in to visit today a hemodynamic...
+    Diagnosis: 0
+
+    Example 597:
+    Clinical Note: a pacing underlying sr s volume neo required for bp support remains hemodynamically stable with low filling pressures brisk huo ci initial hct with above parameters prbc s x infusing per doctor meets fast track criteria reversed propofol weaning started daughter updated via phone see flow sheet resp care pt received from or intubated with ett pt was extubated without incident and is on cool aerosol see carevue for details neuro alert oriented moves all extremties follows commands no defecits not...
+    Diagnosis: 2
+
+    Example 512:
+    Clinical Note: admission s p avr tissue replacement today uneventful or to csru on neo propofol gtts see admission history for details of pmh or events neuro pt reversed as per protocol perrla mae on commands follows commands medicated w morphine for pain toradol started im for c o ct pain c o trouble taking deep breaths reso ved after toradol im given cv hr s sr no ectopy sbp labile on and off neo gtts see carevue for details presently on neo at mcg kg min keeping map s cvp ci by thermodilution see carevue fo...
+    Diagnosis: 2
+
+    Now, review the following new patient case:
+
+Patient ID: 172048.0
+Clinical Note: transfer note very pleasant y o wf with nkda pmh includes anemia angina dementia hoh right hearing aide right sided sciatic osteoarthritis ovarian cell tumor s p aortic valvuloplasty htn glucose intolerence aortic stenosis she is s p aortic valvuloplasty with complication of complete heart block pt paced in procedure via left femoral venous sheath admitted to sicu post procedure vpaced bilateral venous catherters on dobutamine drip for hypotension this am vpased sensing only until when venous sheaths and pacer removed tegaderm dressings placed bilaterally bilateral dorsalis pedis pulses palp posterior tib by doppler extremities warm dry chest xray today wnl pre and post sheath removal ekg no changes pt oob to commode x since sheath removal sitting up in bed at degrees tmax last temp at ccu resident aware pulse st degree heart block no ectopy nbp pt a o x to person only unable to name place or month resp rr osat r a occasional desat to encouraged deep breathing immediate resat to lung sounds clear with crackles at bilateral bases dr aware ivf kvo pain low back pain secondary to sciatica at given oxycodone mg good effect ivf kvo cc bolus ns x for low uo and lasix given at with little effect dr aware uo improved to cc hr abd soft non distended bs flatus taking clear liqs and had some pudding labs hct pt k mg ca femoral dressing intact no heamatoma dorsalis pedis palp plan continue with plan of care continue to monitor cardiac status and femoral sites admission note this year old lady was admitted c dr ccu service past hx htn ovarian tumor decreased hearing poor gait and balance nkda current hx worsening sob and weight loss no chest pain or syncope dx critical aortic stenosis admitted to nsicu from cath lab following aortic valvoplasty pt has bilateral femoral venous sheaths with pacing wires introduced via right sheath vpacer on demand sensing but pacing rarely pulses palpable bil fems bil dp s and pt s kvo fluids maintained via both lines bil leg immobilizers applied to keep legs straight ekg and cxr done dobutamine wenaed to off mg k and ica repleted last noc all levels within normal parameters this am vital signs have been stable throughout noc pt alert and oriented fleeting episode of disorientation to place but quickly resolved c back pain early shift states she has sciatica initially treated effectively with iv morphine comfortable status maintained with po oxycodone settled and slept well after family left pleasant and cooperative with all care
+
+Diagnosis (respond with only the number 0, 1, 2, or 3):<end_of_turn>
+<start_of_turn>model
+
+================================================================================
+TEST CASE TEXT:
+================================================================================
+transfer note very pleasant y o wf with nkda pmh includes anemia angina dementia hoh right hearing aide right sided sciatic osteoarthritis ovarian cell tumor s p aortic valvuloplasty htn glucose intolerence aortic stenosis she is s p aortic valvuloplasty with complication of complete heart block pt paced in procedure via left femoral venous sheath admitted to sicu post procedure vpaced bilateral venous catherters on dobutamine drip for hypotension this am vpased sensing only until when venous sheaths and pacer removed tegaderm dressings placed bilaterally bilateral dorsalis pedis pulses palp posterior tib by doppler extremities warm dry chest xray today wnl pre and post sheath removal ekg no changes pt oob to commode x since sheath removal sitting up in bed at degrees tmax last temp at ccu resident aware pulse st degree heart block no ectopy nbp pt a o x to person only unable to name place or month resp rr osat r a occasional desat to encouraged deep breathing immediate resat to lung sounds clear with crackles at bilateral bases dr aware ivf kvo pain low back pain secondary to sciatica at given oxycodone mg good effect ivf kvo cc bolus ns x for low uo and lasix given at with little effect dr aware uo improved to cc hr abd soft non distended bs flatus taking clear liqs and had some pudding labs hct pt k mg ca femoral dressing intact no heamatoma dorsalis pedis palp plan continue with plan of care continue to monitor cardiac status and femoral sites admission note this year old lady was admitted c dr ccu service past hx htn ovarian tumor decreased hearing poor gait and balance nkda current hx worsening sob and weight loss no chest pain or syncope dx critical aortic stenosis admitted to nsicu from cath lab following aortic valvoplasty pt has bilateral femoral venous sheaths with pacing wires introduced via right sheath vpacer on demand sensing but pacing rarely pulses palpable bil fems bil dp s and pt s kvo fluids maintained via both lines bil leg immobilizers applied to keep legs straight ekg and cxr done dobutamine wenaed to off mg k and ica repleted last noc all levels within normal parameters this am vital signs have been stable throughout noc pt alert and oriented fleeting episode of disorientation to place but quickly resolved c back pain early shift states she has sciatica initially treated effectively with iv morphine comfortable status maintained with po oxycodone settled and slept well after family left pleasant and cooperative with all care

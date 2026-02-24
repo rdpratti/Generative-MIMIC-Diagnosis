@@ -1,0 +1,8 @@
+icd10_code,description
+A41.9,"Sepsis, unspecified organism"
+I21.4,"Acute Subendocardial Myocardial Infarction (I21.4) \n >>> ACUTE/NEW event happening NOW \n >>> Rising cardiac biomarkers (troponin/CK-MB) \n >>> New ST-segment changes on EKG \n >>> Keywords: acute, STEMI, troponin elevation, rule out MI"
+I25.10,"Coronary Atherosclerosis WITHOUT Acute MI (I25.10) \n >>> CHRONIC/STABLE coronary disease \n >>> NO acute troponin elevation \n >>> History of CAD, previous stents, stable angina \n >>> Keywords: chronic CAD, stable, history of, known CAD \n >>> NOT currently having an acute MI"
+I35.2,"Nonrheumatic Aortic (Valve) Stenosis with Insufficiency (I35.2) \n >>> PRIMARY problem is the AORTIC VALVE \n >>> Valve calcification, stenosis, or regurgitation \n >>> Systolic \n murmur, abnormal echo findings \n >>> Keywords: aortic stenosis, aortic regurgitation, valve disease"
+I50.9,"Unspecified Congestive Heart Failure (I50.9) \n >>> PRIMARY problem is FLUID OVERLOAD or PUMP FAILURE \n >>> Reduced ejection fraction, pulmonary edema \n >>> Elevated BNP, dyspnea, peripheral edema \n >>> Keywords: heart failure, CHF, reduced EF, pulmonary edema \n >>> NOT acute MI causing secondary failure"
+J96.00,'Acute respiratory failure unspecified'
+N17.9,'Acute kidney failure unspecified'

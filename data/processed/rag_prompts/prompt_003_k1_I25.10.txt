@@ -1,0 +1,44 @@
+================================================================================
+PROMPT #3 - RAG-ENHANCED FEW-SHOT
+================================================================================
+Generated: 20251218_103143
+Test Case ID: 112096.0
+True Diagnosis: I25.10
+K (examples retrieved): 1
+================================================================================
+
+<start_of_turn>user
+
+        You are an experienced attending physician reviewing clinical notes to make a diagnostic assessment.
+
+        Based on the patient's clinical presentation, predict which diagnosis class applies:
+
+                    0 = I21.4 (Acute subendocardial myocardial infarction)
+                    1 = I25.10 (Coronary Atherosclerosis)
+                    2 = I35.2 (Nonrheumatic Aortic (Valve) Stenosis with Insufficiency)
+                    3 = I50.9 (Unspecified Congestive Heart Failure)
+
+    CRITICAL INSTRUCTIONS:
+    - Respond with ONLY a single digit: 0, 1, 2, or 3
+    - Do not include the diagnosis code (e.g., A41.9)
+    - Do not add any explanation, punctuation, spaces, or newlines
+    - Output format: Just the digit, nothing else
+
+    Here are some similar example cases:
+
+Example 696:
+    Clinical Note: patient admitted s p avr from or patietn intubated and sedated with iv propofol iv neo pserl pacer off ct s patent for small amt sero sang drainage og placed placement checked cco swan in place as well as heart port cath foley in place patent for clear yellow urine dopplerable pulses except absent lt dp family in neuro appears oriented following commands mae cardiac cco swan in place co ci acceptable by fick no gtt s at present ct s patent for small amt sero sang drainage dopplerable pulses exce...
+    Diagnosis: 2
+
+    Now, review the following new patient case:
+
+Patient ID: 112096.0
+Clinical Note: patient admitted s p cabg x from or intubated and sedated with iv propofol iv neo og in place placement checked patient being a paced with underlying ryhthm s braby co ci acceptable ct s patent for small amt sero sang drainage foley in place patent for clear urine dopplerable pulses family in neuro mae follows commands appears intact cardiac mp a paced underlying rate s sb co ci acceptable able to wean neo off ct s patent for small amt sero sang drainage dopplerable pulses resp cs clear diminished in bases extubated at anesthesia here slow to wake np s liters will need encouragement to cough deep breath gi og tube dc d with extubation gu foley in place patent for clear yellow urine endo insulin gtt following protocol family in aware of progress neuro awake alert able to follow commands pain management primary problem pt c o pain while awake enc to be patient and attempt to reposition resp lsc dim sats on lpm not very good at cdb refusing to cough at this time d t pain pt has been medicated approp ct dumped a bit with turn dng wnl otherwise cv nsr to sb a paced at times through night for symptomatic brady currently nsr in s bolus x for labile pressure and uo on neo for pressure support much better after fluid filling pressures wnl pad elevated at times assoc with c o pain and holding in coughs b p map down into s when medicated for pain good pulses gi gu adb soft non tender bsx foley to gravity uo marginal res aware endo off insulin gtt at this time plan swan out oob enc cdb cont plan of care shift update d a vss hr nsr no ectopy noted titrating neo to keep map ci co swan d c introducer intact lungs clear with decreased left base sats on l via nc increase to l for low pao good productive cough with small amt of thin tan secretions uses incentive spirometer to ml x q a ox mae to command perla abd soft and nondistended with bs adv diet to heart healthy and toll well c o min incisional pain upon activity and cough and deep breath tylenol and toradol for pain ct to cm water suction with serosanguinous output site intact foley with low urine output clear amber ml bolus x and then mg lasix x with good results oob to chair and ambulates x in room blood sugar via sliding scale r cont titrating neo as toll see flow for details cont to encourage diet activity and incentive spirometer use plan to wean neo to off and possible transfer to if bed available in am pain control with tylenol as tol family visiting at bedside today and updated with current condion and answered all questions doctor also at bedside to answer all questions cont to
+
+Diagnosis (respond with only the number 0, 1, 2, or 3):<end_of_turn>
+<start_of_turn>model
+
+================================================================================
+TEST CASE TEXT:
+================================================================================
+patient admitted s p cabg x from or intubated and sedated with iv propofol iv neo og in place placement checked patient being a paced with underlying ryhthm s braby co ci acceptable ct s patent for small amt sero sang drainage foley in place patent for clear urine dopplerable pulses family in neuro mae follows commands appears intact cardiac mp a paced underlying rate s sb co ci acceptable able to wean neo off ct s patent for small amt sero sang drainage dopplerable pulses resp cs clear diminished in bases extubated at anesthesia here slow to wake np s liters will need encouragement to cough deep breath gi og tube dc d with extubation gu foley in place patent for clear yellow urine endo insulin gtt following protocol family in aware of progress neuro awake alert able to follow commands pain management primary problem pt c o pain while awake enc to be patient and attempt to reposition resp lsc dim sats on lpm not very good at cdb refusing to cough at this time d t pain pt has been medicated approp ct dumped a bit with turn dng wnl otherwise cv nsr to sb a paced at times through night for symptomatic brady currently nsr in s bolus x for labile pressure and uo on neo for pressure support much better after fluid filling pressures wnl pad elevated at times assoc with c o pain and holding in coughs b p map down into s when medicated for pain good pulses gi gu adb soft non tender bsx foley to gravity uo marginal res aware endo off insulin gtt at this time plan swan out oob enc cdb cont plan of care shift update d a vss hr nsr no ectopy noted titrating neo to keep map ci co swan d c introducer intact lungs clear with decreased left base sats on l via nc increase to l for low pao good productive cough with small amt of thin tan secretions uses incentive spirometer to ml x q a ox mae to command perla abd soft and nondistended with bs adv diet to heart healthy and toll well c o min incisional pain upon activity and cough and deep breath tylenol and toradol for pain ct to cm water suction with serosanguinous output site intact foley with low urine output clear amber ml bolus x and then mg lasix x with good results oob to chair and ambulates x in room blood sugar via sliding scale r cont titrating neo as toll see flow for details cont to encourage diet activity and incentive spirometer use plan to wean neo to off and possible transfer to if bed available in am pain control with tylenol as tol family visiting at bedside today and updated with current condion and answered all questions doctor also at bedside to answer all questions cont to

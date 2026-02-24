@@ -1,0 +1,8 @@
+icd10_code,description
+A41.9,"Sepsis - systemic infection with fever, elevated WBC, positive blood cultures, SIRS criteria"
+I21.4,"Acute MI - ACUTE troponin elevation, ST changes, chest pain, NEW cardiac ischemia, acute event"
+I25.10,"Chronic CAD - STABLE coronary disease, history of stenosis, NO acute troponin rise, chronic"
+I35.2,"Aortic stenosis - PRIMARY valve disease, calcification, systolic murmur, reduced valve area"
+I50.9,"Heart failure - PRIMARY pump failure, reduced EF, pulmonary edema, elevated BNP, fluid overload"
+J96.00,"Respiratory failure - hypoxemia requiring oxygen, increased work of breathing, abnormal blood gases"
+N17.9,"Kidney failure - rising creatinine, decreased urine output, elevated BUN, metabolic acidosis"

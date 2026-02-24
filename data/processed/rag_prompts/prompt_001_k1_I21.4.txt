@@ -1,0 +1,44 @@
+================================================================================
+PROMPT #1 - RAG-ENHANCED FEW-SHOT
+================================================================================
+Generated: 20251218_103143
+Test Case ID: 179237.0
+True Diagnosis: I21.4
+K (examples retrieved): 1
+================================================================================
+
+<start_of_turn>user
+
+        You are an experienced attending physician reviewing clinical notes to make a diagnostic assessment.
+
+        Based on the patient's clinical presentation, predict which diagnosis class applies:
+
+                    0 = I21.4 (Acute subendocardial myocardial infarction)
+                    1 = I25.10 (Coronary Atherosclerosis)
+                    2 = I35.2 (Nonrheumatic Aortic (Valve) Stenosis with Insufficiency)
+                    3 = I50.9 (Unspecified Congestive Heart Failure)
+
+    CRITICAL INSTRUCTIONS:
+    - Respond with ONLY a single digit: 0, 1, 2, or 3
+    - Do not include the diagnosis code (e.g., A41.9)
+    - Do not add any explanation, punctuation, spaces, or newlines
+    - Output format: Just the digit, nothing else
+
+    Here are some similar example cases:
+
+Example 132:
+    Clinical Note: dyspnic w any exertion lungs w crackles throughout pt had ct scan prior to transfer showing ground glass opacities r l most consistent w pulmonary edema also small r l pleural effusions t on admission up to at action abx changed to nafcillin g qhr r and levofloxin mg q hr id consulted interventional pulmonology consulted w draining effusions on ultrasound effusions smaller abg done tylenol given lasix mg given at mrsa screen sent response improved resp status continues on l cool mask w sats abg ...
+    Diagnosis: 0
+
+    Now, review the following new patient case:
+
+Patient ID: 179237.0
+Clinical Note: ccu nursing admit note yo male w pmh pe on coumadin known r le dvt presented to osh w c o sob and swelling of r leg cta extension of dvt given lovanox troponin elevated to given ceftriaxone and zithro for concern for pna transferred to for further care cxr small bibasal effusions stable appearance to calcified granuloma in l mid zone mild chf cta no new pe small pe in lower lobes bilaterally rml lul increasing mediastinal and hilar lymphadenopathy of etiology small pulmonary nodules in r lung unchanged from prior exam this am pt triggered for hypoxia sats rr feeling i can t breath hr s abg given face mask at liters neb rx mg lasix pt transferred to ccu for further rx and possibility of niv pt arrived very diaphoretic sats on lnp rr lungs w diminished bs using accessory muscles given mg iv lasix mg solumedrol over next min pt resp status improved less diaphoretic not using accessory muscles rr sats on lnp neuro pt alert oriented x knows name and that he is in the hospital not awways sure which one unclear on date and time mae cv hr sr w no vea bp no c o cp ck peak trop heparin infusing at units hr w ptt at resp on lnp w sats diminished bs at bases rr gi good appitite gu foley draining cc hr currently cc id afebrile skin intact social daughter h called from fl states she is hcp w sister h c as alternate can find no form in chart pt lives w son is independent of adl s a episode of respiratory distress now resolved nstemi p monitor resp status f u ptt at nursing progress note p a s i guess i slept o neuro pt oriented x orients to name place unsure of time moving all extremities sleeping in long naps overnight cv s p nstemi hr sr st no vea noted bp receiving lopressor and captopril as ordered cont on heparin units hr with therapeutic ptt received coumadin last eve denies c o chest pain resp c o episode of shortness of breath placed on nrb for short period given alb atr neb very diminished breath sounds throughout lung field placed on vm l after neb treatment pt continued to pull off mask o sat down to on room air now on l nc with o sats goal to keep o sat on prednisone taper for copd loose non porductive gu urine output cc hr given lasix mg ivp x with fair response in diuresis gi abd soft sl distended appetite good inc of small soft bm id afebrile cont on levo for pna a triggered on floor for hypoxia r i nstemi p cont to monitor i o resp status maintain sat follow lytes replete as needed update pt and family on plan of care per ccu team
+
+Diagnosis (respond with only the number 0, 1, 2, or 3):<end_of_turn>
+<start_of_turn>model
+
+================================================================================
+TEST CASE TEXT:
+================================================================================
+ccu nursing admit note yo male w pmh pe on coumadin known r le dvt presented to osh w c o sob and swelling of r leg cta extension of dvt given lovanox troponin elevated to given ceftriaxone and zithro for concern for pna transferred to for further care cxr small bibasal effusions stable appearance to calcified granuloma in l mid zone mild chf cta no new pe small pe in lower lobes bilaterally rml lul increasing mediastinal and hilar lymphadenopathy of etiology small pulmonary nodules in r lung unchanged from prior exam this am pt triggered for hypoxia sats rr feeling i can t breath hr s abg given face mask at liters neb rx mg lasix pt transferred to ccu for further rx and possibility of niv pt arrived very diaphoretic sats on lnp rr lungs w diminished bs using accessory muscles given mg iv lasix mg solumedrol over next min pt resp status improved less diaphoretic not using accessory muscles rr sats on lnp neuro pt alert oriented x knows name and that he is in the hospital not awways sure which one unclear on date and time mae cv hr sr w no vea bp no c o cp ck peak trop heparin infusing at units hr w ptt at resp on lnp w sats diminished bs at bases rr gi good appitite gu foley draining cc hr currently cc id afebrile skin intact social daughter h called from fl states she is hcp w sister h c as alternate can find no form in chart pt lives w son is independent of adl s a episode of respiratory distress now resolved nstemi p monitor resp status f u ptt at nursing progress note p a s i guess i slept o neuro pt oriented x orients to name place unsure of time moving all extremities sleeping in long naps overnight cv s p nstemi hr sr st no vea noted bp receiving lopressor and captopril as ordered cont on heparin units hr with therapeutic ptt received coumadin last eve denies c o chest pain resp c o episode of shortness of breath placed on nrb for short period given alb atr neb very diminished breath sounds throughout lung field placed on vm l after neb treatment pt continued to pull off mask o sat down to on room air now on l nc with o sats goal to keep o sat on prednisone taper for copd loose non porductive gu urine output cc hr given lasix mg ivp x with fair response in diuresis gi abd soft sl distended appetite good inc of small soft bm id afebrile cont on levo for pna a triggered on floor for hypoxia r i nstemi p cont to monitor i o resp status maintain sat follow lytes replete as needed update pt and family on plan of care per ccu team
