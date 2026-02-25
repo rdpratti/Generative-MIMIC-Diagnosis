@@ -1,5 +1,61 @@
-# llama_wrapper.py
-# Wrapper class for llama-cpp-python to work with Gemma models
+"""
+llama_wrapper - llama-cpp-python Wrapper for Gemma GGUF Models
+================================================================
+Provides a wrapper around llama-cpp-python's Llama class to support
+Gemma GGUF model inference with logprob-based classification, memory
+management, and OpenAI-compatible output formatting.
+
+Class
+-----
+LlamaCppWrapper
+    Wraps the llama.cpp Llama model with methods for tokenization,
+    token size validation, memory checking, GPU cleanup, and
+    probability-based text generation for ICD-10 classification.
+
+Methods
+-------
+__init__(model_path, n_ctx, n_threads, n_batch, use_mmap, temp, seed, logger)
+    Validates and loads the GGUF model file. Auto-detects optimal thread
+    count, checks available RAM, validates GGUF magic bytes, and
+    initializes the Llama instance with GPU layer offloading enabled.
+
+tokenize(text)
+    Tokenizes a text string or bytes using the underlying llama.cpp
+    model tokenizer. Returns a list of token IDs.
+
+find_token_size(prompt, max_tokens)
+    Checks whether the prompt fits within the model context window.
+    Logs a warning and reduces max_tokens if the prompt is too long.
+    Returns None if fewer than 100 tokens remain.
+
+check_memory()
+    Logs available system RAM before generation. Logs a low memory
+    warning if less than 1GB is available.
+
+_load_model()
+    Internal method that instantiates and returns the Llama object
+    with GPU layer offloading, logits_all enabled, and verbose disabled.
+
+_reload_model()
+    Deletes the current Llama instance, runs garbage collection, and
+    reloads the model. Used to recover from CUDA errors mid-inference.
+
+_cleanup_gpu_memory(inference_count)
+    Resets the KV cache, runs Python garbage collection, clears PyTorch
+    CUDA cache if available, and logs current VRAM usage via nvidia-smi.
+
+generate_with_probabilities(prompt, classes, max_tokens)
+    Runs inference on the prompt with logprobs=10 enabled. Resets the
+    KV cache before each call, validates token size, and returns an
+    OpenAI-compatible response dict with top logprobs. Returns a uniform
+    fallback probability distribution on error or missing logprobs.
+
+_convert_to_openai_format(llama_output)
+    Converts llama-cpp-python output to OpenAI-compatible format.
+    Searches all token positions to find the one with the most digit
+    class tokens (0-3), then returns a structured dict with top_logprobs
+    sorted by probability in descending order.
+"""
 
 import os
 import io
@@ -8,6 +64,7 @@ import psutil
 from llama_cpp import Llama
 import gemmaUtils as gu
 import time
+import torch
 from typing import Dict
 
 class LlamaCppWrapper:

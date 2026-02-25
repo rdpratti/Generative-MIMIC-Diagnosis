@@ -1,5 +1,65 @@
-# MIMIC-III Diagnosis Code Prediction using Local Gemma 
-# This script uses llama.cpp library to predict diagnosis codes from patient notes
+"""
+Gemma Diagnosis - MIMIC-III Diagnosis Code Prediction Driver
+=============================================================
+Main driver script for predicting ICD-10 diagnosis codes from MIMIC-III 
+clinical notes using local Gemma GGUF models via llama.cpp. Supports both
+standard few-shot and RAG-enhanced classification modes.
+
+Functions
+---------
+save_results(classifier, metrics, logger)
+    Saves prediction results to CSV and logs sample predictions and
+    misclassifications.
+
+build_needed_classes(mpath, model_name, train_sample_df2, test_sample_df2,
+                     icd10_csv_path, example_size, example_ct, test_size,
+                     use_rag, logger, balanced_retrieval, embedding_model,
+                     temperature, seed, use_few_shot)
+    Instantiates the LlamaCppWrapper and builds either a standard
+    FewShotDiagnosisClassifier or a RAGFewShotDiagnosisClassifier depending
+    on the use_rag flag. Fits the classifier on training data and returns
+    the fitted classifier instance.
+
+run_single_patient_test(test_sample_df2, classifier, logger)
+    Runs a prediction on the first patient in the test set and logs the
+    predicted vs true ICD-10 code, confidence score, and full class
+    probability distribution.
+
+run_full_patient_test(test_sample_df2, classifier, logger)
+    Runs classifier.evaluate2() on the full test DataFrame and returns
+    the metrics dictionary including results_df.
+
+execute_classification(temp, train_ct, test_ct, train_seq_size, test_seq_size,
+                       example_size, example_ct, test_size, use_rag,
+                       balanced_rag, use_few_shot, logger, seed)
+    Top-level orchestration function. Configures all paths and model settings,
+    then sequentially calls setup, data loading, classifier building, and
+    full patient evaluation. Logs timing for each major stage.
+
+parse_args()
+    Defines and parses a basic argument parser with temperature, seed,
+    and output file arguments.
+
+main()
+    Entry point. Initializes logging, parses all command-line arguments,
+    and calls execute_classification() with the provided parameters.
+
+Command-Line Arguments
+----------------------
+--temperature       Sampling temperature for Gemma model (default: 0.1)
+--train_ct          Number of training admissions per diagnosis
+--test_ct           Number of test admissions per diagnosis
+--train_seq_size    Word count for training subsequences
+--test_seq_size     Word count for test subsequences
+--example_size      Max word size of few-shot examples
+--example_ct        Number of few-shot examples per diagnosis
+--test_size         Max word size of test subsequences (default: 500)
+--use_rag           Flag to enable RAG-enhanced classifier
+--balanced_rag      Flag to retrieve equal examples per diagnosis in RAG
+--cv                Flag to enable cross-validation mode
+--seed              Random seed for reproducibility (default: 42)
+--few_shot_type     Few-shot selection strategy type (default: 'C')
+"""
 
 from gemmaUtils import (
     setup, discover_models, check_avail_memory, 

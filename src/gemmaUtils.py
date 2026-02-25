@@ -1,4 +1,45 @@
-# The file defines utility functions to be used by gemma analysis work.
+"""
+Utility Functions - gemmaUtils.py
+==================================================
+
+Functions
+---------
+setup(logger)
+    Logs environment setup information including Python version, platform,
+    and key library versions (llama-cpp-python, pandas, numpy, scikit-learn,
+    sentence-transformers, faiss).
+
+diagnose_gguf_file(model_path, logger)
+    Validates a GGUF model file by checking existence, file size, magic bytes,
+    and version compatibility.
+
+discover_models(mpath, logger)
+    Scans a directory recursively for all downloaded GGUF model files and
+    prints their names, paths, and sizes.
+
+setup_logging(log_dir, log_level)
+    Configures logging to both a timestamped log file and console output.
+    Returns a configured logger instance.
+
+copy_code_to_git(spath, gpath)
+    Copies source code file to the GitHub directory for version control.
+    Git add/commit commands must be run separately from the command line.
+
+check_avail_memory(logger)
+    Checks available system RAM and exits if less than 3GB is available.
+    Forces garbage collection before checking.
+
+_validate_and_clean(df, stage, text_col, logger)
+    Validates clinical note text integrity at key pipeline stages. Removes
+    records that are non-string, empty, too short, contain Office document
+    markers, or have binary noise indicators (low alpha ratio, short words).
+
+load_data(trfile, tsfile, train_sample_size, test_sample_size, 
+          train_seq_size, test_seq_size, logger, seed_value)
+    Loads MIMIC-III training and test data from parquet files. Samples
+    admissions by diagnosis, creates 1000-word subsequences, and validates
+    data at each pipeline stage. Returns train and test DataFrames.
+"""
 
 import pandas as pd
 import numpy as np
